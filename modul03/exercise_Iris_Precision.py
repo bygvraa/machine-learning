@@ -5,7 +5,7 @@ iris_dataset = load_iris()
 
 # Split the data
 from sklearn.model_selection import train_test_split
-X_train, X_test, Y_train, Y_test = train_test_split(iris_dataset['data'], iris_dataset['target'], random_state=0)
+X_train, X_test, Y_train, Y_test = train_test_split(iris_dataset['data'], iris_dataset['target'], random_state=0) # type: ignore
 
 # random_state simply sets a seed to the random generator,
 # so that your train-test splits are always deterministic.
