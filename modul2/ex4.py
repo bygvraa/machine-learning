@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Apr 11 15:12:04 2018
-
-@author: Sila
-"""
 
 # Python version
 import matplotlib.pyplot as plt
@@ -35,4 +30,3 @@ ax.set_xlabel('Thete0')
 ax.set_ylabel('Theta1')
 ax.set_zlabel('Cost')
 plt.show()
-
