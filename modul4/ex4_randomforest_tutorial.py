@@ -21,13 +21,13 @@ y = iris.target  # type: ignore # these are the correct classifications
 # print(X)
 print("Number of samples: " + str(len(y)))
 
-# visulize the dataset
+# visualize the dataset
 plt.figure()
 
 # define colors - red, green, blue
 colormap = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])  # type: ignore
 
-# pplot labxel
+# pplot label
 plt.xlabel(iris.feature_names[0])  # type: ignore
 plt.ylabel(iris.feature_names[1])  # type: ignore
 
@@ -51,7 +51,7 @@ print("0 is red, 1 is green, 2 is blue")
 
 # Now we will try to train a RandomForest Classifier on this data and train with a
 # different number of trees and plot the accuracy (on the same data as we train
-# - of course you predict the accurary on a validation dataset in a real project and not on the training set)
+# - of course you predict the accuracy on a validation dataset in a real project and not on the training set)
 
 accuracy = []
 error = []

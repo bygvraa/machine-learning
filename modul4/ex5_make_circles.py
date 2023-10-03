@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from sklearn.datasets import make_circles;
+from sklearn.datasets import make_circles
 from sklearn.ensemble import RandomForestClassifier
 
 from matplotlib import pyplot

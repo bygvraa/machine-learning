@@ -14,7 +14,7 @@ colors = {0: 'red', 1: 'blue'}
 fig, ax = pyplot.subplots()
 grouped = df.groupby('label')
 for key, group in grouped:
-    group.plot(ax=ax, kind='scatter', x='x', y='y', label=key, color=colors[key]) # type: ignore
+    group.plot(ax=ax, kind='scatter', x='x', y='y', label=key, color=colors[key])
 
 pyplot.show()
 
