@@ -1,3 +1,8 @@
+# Questions:
+# A) Adjust number of hidden layers, and number of iterations in order to have a proper classification.
+# B) Again, try without the scaler (?).
+# C) Experiment with the settings for blob-centers, and number of samples.
+
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
@@ -21,11 +26,14 @@ for n_class in range(len(blob_centers)):
 
 plt.show()
 
+
 # Split in train and test set
 from sklearn.model_selection import train_test_split
-datasets = train_test_split(data,
-                            labels,
-                            test_size=0.2)
+
+datasets = train_test_split(
+    data,
+    labels,
+    test_size=0.2)
 
 X_train, X_test, y_train, y_test = datasets
 
@@ -38,13 +46,17 @@ X_train = scaler.transform(X_train)
 X_test = scaler.transform(X_test)
 
 from sklearn.neural_network import MLPClassifier
-mlp = MLPClassifier(hidden_layer_sizes=(5), max_iter=100)
+mlp = MLPClassifier(
+    hidden_layer_sizes=(5),
+    max_iter=100)
+
 mlp.fit(X_train, y_train)
 
 #predictions
 predictions = mlp.predict(X_test)
 
 print(predictions)
+
 
 import numpy as np
 
@@ -69,6 +81,6 @@ plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
 plt.scatter(X_test[:, 0], X_test[:, 1], c=y_test)
 plt.xlabel('Y length')
 plt.ylabel('X width')
-plt.title("MLP")
+plt.title("Multilayer Perceptron (MLP)")
 
 plt.show()
