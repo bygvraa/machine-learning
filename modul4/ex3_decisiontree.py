@@ -10,15 +10,15 @@ y = iris.target  # type: ignore
 # check how many samples we have
 print("Number of samples: " + str(len(y)))
 
-# visulize the dataset
+# visualize the dataset
 plt.figure()
 
 # define colors - red, green, blue
-colormap = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])  # type: ignore
+colormap = ListedColormap(['#FF0000', '#00FF00', '#0000FF'])
 
-# pplot labxel
-plt.xlabel(iris.feature_names[2])  # type: ignore
-plt.ylabel(iris.feature_names[3])  # type: ignore
+# pplot label
+plt.xlabel(iris.feature_names[2])
+plt.ylabel(iris.feature_names[3])
 
 # Plot the training points
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap=colormap, edgecolor='black', s=20)
@@ -42,7 +42,6 @@ for name, score in zip(iris.feature_names[2:4], tree_clf.feature_importances_): 
     print("feature importance: ", name, score)
 
 import pydotplus
-from sklearn.externals.six import StringIO  # type: ignore
 import matplotlib.image as mpimg
 import io
 
@@ -51,14 +50,14 @@ dot_data = io.StringIO()
 export_graphviz(tree_clf,
                 out_file=dot_data,
                 # or put a filename here filename like "graph.dot", you then need to convert it into .png
-                feature_names=iris.feature_names[2:],  # type: ignore
-                class_names=iris.target_names,  # type: ignore
+                feature_names=iris.feature_names[2:],
+                class_names=iris.target_names,
                 rounded=True,
                 filled=True)
 
 # write the dot data to a .png file
 filename = "tree.png"
-pydotplus.graph_from_dot_data(dot_data.getvalue()).write_png(filename)  # type: ignore
+pydotplus.graph_from_dot_data(dot_data.getvalue()).write_png(filename)
 img = mpimg.imread(filename)  # read this .png file
 
 plt.figure(figsize=(8, 8))  # setting the size to 10 x 10 inches of the figure.
@@ -67,9 +66,9 @@ plt.show()
 
 plt.figure()
 
-# pplot labxel
-plt.xlabel(iris.feature_names[2])  # type: ignore
-plt.ylabel(iris.feature_names[3])  # type: ignore
+# pplot label
+plt.xlabel(iris.feature_names[2])
+plt.ylabel(iris.feature_names[3])
 
 # Plot the training points
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap=colormap, edgecolor='black', s=20)

@@ -33,4 +33,4 @@ print(accuracy)
 
 print("probability of point = (0.25,-0.5) = " + str(tree_clf.predict_proba([[0.25, -0.5]])))
 print("probability of point = (1.5,-05) = " + str(tree_clf.predict_proba([[1.5, -0.5]])))
-print("probability of point = (-1,1) =  " + str(tree_clf.predict_proba([[-1, 1]])))
+print("probability of point = (-1,1) = " + str(tree_clf.predict_proba([[-1, 1]])))
