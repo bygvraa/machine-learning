@@ -59,15 +59,17 @@ clusters = kmeans.cluster_centers_
 # printing our cluster centers - there will be 2 of them.
 print(clusters)
 
+plt.suptitle('Petal')
+
 # Plot the Original Classifications
 plt.subplot(1, 2, 1)
 plt.scatter(x.Petal_Length, x.Petal_Width, c=colormap[y.Targets], s=40)
-plt.title('Real Classification\n(Petal)')
+plt.title('Real Classification')
 
 # Plot the Models Classifications
 plt.subplot(1, 2, 2)
 plt.scatter(x.Petal_Length, x.Petal_Width, c=colormap[labels], s=40)
-plt.title('K Mean Classification\n(Petal)')
+plt.title('K Mean Classification')
 
 plt.show()
 
@@ -87,15 +89,16 @@ clusters = kmeans.cluster_centers_
 # printing our cluster centers - there will be 2 of them.
 print(clusters)
 
+plt.suptitle('Sepal')
 
 # Plot the Original Classifications
 plt.subplot(1, 2, 1)
 plt.scatter(x.Sepal_Length, x.Sepal_Width, c=colormap[y.Targets], s=40)
-plt.title('Real Classification\n(Sepal)')
+plt.title('Real Classification')
 
 # Plot the Models Classifications
 plt.subplot(1, 2, 2)
 plt.scatter(x.Sepal_Length, x.Sepal_Width, c=colormap[labels], s=40)
-plt.title('K Mean Classification\n(Sepal)')
+plt.title('K Mean Classification')
 
 plt.show()
