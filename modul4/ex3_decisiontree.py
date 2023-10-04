@@ -31,14 +31,14 @@ print(k)
 
 tree_clf = DecisionTreeClassifier(max_depth=2)  # indicate we do not want the tree to be deeper than 2 levels
 tree_clf.fit(X, y)  # training the classifier
-print("seed : " + str(tree_clf.random_state))  # type: ignore
+print("seed : " + str(tree_clf.random_state))
 
 # prediction
 print("probability of point = (2,1) = " + str(tree_clf.predict_proba([[2, 1]])))
 print("probability of point = (4,1) = " + str(tree_clf.predict_proba([[4, 1]])))
 print("probability of point = (5,2) =  " + str(tree_clf.predict_proba([[5, 2]])))
 
-for name, score in zip(iris.feature_names[2:4], tree_clf.feature_importances_):  # type: ignore
+for name, score in zip(iris.feature_names[2:4], tree_clf.feature_importances_):
     print("feature importance: ", name, score)
 
 import pydotplus
