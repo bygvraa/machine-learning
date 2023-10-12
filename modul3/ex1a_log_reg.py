@@ -2,31 +2,44 @@ from sklearn import linear_model
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Array of points with a classification
+# Array of data points ('X') and their corresponding classifications ('y')
 X = np.array(np.matrix(
-    '6,350; 2.5, 400;4.5,500; 3.5,350; 2,300;4,600;7,300;5,500;5,400;6,400;3,400;4,500;1,200;3,400;7,700;3,550;2.5,650'))
+    '6,350;2.5,400;4.5,500;3.5,350;2,300;4,600;7,300;5,500;5,400;6,400;3,400;4,500;1,200;3,400;7,700;3,550;2.5,650'))
 y = np.array(np.matrix('0;0;1;0;0;1;1;1;0;1;0;0;0;0;1;1;0'))[:, 0]
 
+# Split the data points into two arrays based on their classification
 pos = np.where(y == 1)
 neg = np.where(y == 0)
 
-plt.plot(X[pos[0], 0], X[pos[0], 1], 'ro')
-plt.plot(X[neg[0], 0], X[neg[0], 1], 'bo')
-plt.xlim([min(X[:, 0]), max(X[:, 0])])
-plt.ylim([min(X[:, 1]), max(X[:, 1])])
+# Create a scatter plot of the data points
+plt.plot(X[pos[0], 0], X[pos[0], 1], 'ro')  # Red for class 1
+plt.plot(X[neg[0], 0], X[neg[0], 1], 'bo')  # Blue for class 0
 
+# Set the x and y axis limits based on the data range
+plt.xlim(min(X[:, 0]), max(X[:, 0]))
+plt.ylim(min(X[:, 1]), max(X[:, 1]))
+
+# Create a logistic regression model with regularization parameter
+# Regularization parameter C (low = strong regularization, high = weak regularization)
 logreg = linear_model.LogisticRegression(C=1000)
 
 model = logreg.fit(X, y)
 
-# model.coef_[0,0]*x + model.coef_[0,1]*y + model.intercept_[0] = 0
+# Create a range of x values ('xx') for plotting the decision boundary
+xx = np.linspace(min(X[:, 0]), max(X[:, 0]))
 
-# y = - ( model.coef_[0,0]*x +  model.intercept_[0]) / model.coef_[0,1]
+# Calculate the decision boundary ('yy') for the logistic regression model
+theta_0 = model.coef_[0, 0]
+theta_1 = model.coef_[0, 1]
+theta_2 = model.intercept_[0]
 
-xx = np.linspace(1, 7)
-yy = -  (model.coef_[0, 0] / model.coef_[0, 1]) * xx - (model.intercept_[0] / model.coef_[0, 1])
+a = -(theta_0 / theta_1)
+b = -(theta_2 / theta_1)
 
-plt.plot(xx, yy, 'k-')
+# y = ax + b
+yy = a * xx + b
 
-plt.plot()
+# Plot the decision boundary as a black line
+plt.plot(xx, yy, 'k-', label=f'y = {a:.2f}x + {b:.2f}')
+plt.legend()
 plt.show()
