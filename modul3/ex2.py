@@ -14,26 +14,45 @@ X = np.array(np.matrix(
     '42.83843832029179'))
 y = np.array(np.matrix('0;0;0;1;1;0;1;1;1;1;0;0;1;1;0;1;1;0;1;1;0'))[:, 0]
 
+# Split the data points into two arrays based on their classification
 pos = np.where(y == 1)
 neg = np.where(y == 0)
 
-plt.plot(X[pos[0], 0], X[pos[0], 1], 'ro')
-plt.plot(X[neg[0], 0], X[neg[0], 1], 'bo')
-plt.xlim([min(X[:, 0]), max(X[:, 0])])
-plt.ylim([min(X[:, 1]), max(X[:, 1])])
+# Create an array of regularization parameter values
+C = [0.0001, 0.001, 0.01, 0.1, 1]
 
-logreg = linear_model.LogisticRegression(C=1000)
+# Create a figure to hold the subplots
+fig, axs = plt.subplots(1, 5, figsize=(15, 3))  # Create 1 row with 5 subplots
 
-model = logreg.fit(X, y)
+for i, C in enumerate(C):
+    # Create a subplot
+    ax = axs[i]
 
-# model.coef_[0,0]*x + model.coef_[0,1]*y + model.intercept_[0] = 0
+    # Create a logistic regression model with the current C value
+    logreg = linear_model.LogisticRegression(C=C)
+    model = logreg.fit(X, y)
 
-# y = - ( model.coef_[0,0]*x +  model.intercept_[0]) / model.coef_[0,1]
+    # Plot the data points
+    ax.plot(X[pos[0], 0], X[pos[0], 1], 'ro', label='Class 1')  # Red dots for class 1
+    ax.plot(X[neg[0], 0], X[neg[0], 1], 'bo', label='Class 0')  # Blue dots for class 0
 
-xx = np.linspace(0, 100)
-yy = -  (model.coef_[0, 0] / model.coef_[0, 1]) * xx - (model.intercept_[0] / model.coef_[0, 1])
+    # Set the x and y axis limits based on the data range
+    ax.set_xlim(min(X[:, 0]), max(X[:, 0]))
+    ax.set_ylim(min(X[:, 1]), max(X[:, 1]))
 
-plt.plot(xx, yy, 'k-')
+    # Calculate the decision boundary
+    xx = np.linspace(0, 100)
+    yy = - (model.coef_[0, 0] / model.coef_[0, 1]) * xx - (model.intercept_[0] / model.coef_[0, 1])
 
-plt.plot()
+    # Plot the decision boundary as a black line
+    ax.plot(xx, yy, 'k-', label=f'C={C}')
+
+    # Calculate and display accuracy score
+    accuracy = model.score(X, y)
+    ax.set_title(f'C: {C}\nAccuracy: {accuracy:.2f}')
+
+plt.tight_layout()
 plt.show()
+
+# # model.coef_[0,0]*x + model.coef_[0,1]*y + model.intercept_[0] = 0
+# # y = - ( model.coef_[0,0]*x +  model.intercept_[0]) / model.coef_[0,1]
