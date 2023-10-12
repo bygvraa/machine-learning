@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Array of points with a classification
-X = np.array(np.matrix('2,300;4,600;7,300;5,500;5,400;6,400;3,400;4,500;1,200;3,400;7,700;3,550;2.5,650'))
+X = np.array(np.matrix(
+    '2,300;4,600;7,300;5,500;5,400;6,400;3,400;4,500;1,200;3,400;7,700;3,550;2.5,650'))
 y = np.array(np.matrix('0;1;1;1;0;1;0;0;0;0;1;1;0'))[:, 0]
 
 pos = np.where(y == 1)
@@ -27,7 +28,8 @@ score = logreg.score(X, y)
 # point in the mesh [x_min, x_max]x[y_min, y_max].
 x_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5
 y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
-xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                     np.arange(y_min, y_max, h))
 
 # Ravel() return a contiguous flattened array.
 # Predict the color for each x,y point
@@ -38,6 +40,6 @@ Z = Z.reshape(xx.shape)
 
 # figure(Num = our figure number, figsize=(1,1)) creates an inch-by-inch image
 plt.figure(1, figsize=(4, 3))
-plt.pcolormesh(xx, yy, Z, cmap=plt.cm.Paired, shading='auto')
+plt.pcolormesh(xx, yy, Z, cmap=plt.cm.tab20c, shading='auto')
 
 plt.show()
