@@ -76,3 +76,5 @@ plt.scatter(X[:, 0], X[:, 1], c=y, cmap=colormap, edgecolor='black', s=20)
 # drawing the splits
 plt.axhline(y=1.75, color='red', linestyle='-')
 plt.axvline(x=2.45, color='blue', linestyle='-')
+
+plt.show()

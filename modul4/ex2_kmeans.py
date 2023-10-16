@@ -15,6 +15,7 @@ print(X)  # just to print the data so we can see what we are dealing with
 
 plt.figure()  # creating a new figure
 plt.scatter(X[:, 0], X[:, 1], color='black', s=20)  # plot x,y values using the color black and size = 20
+plt.show()
 
 k = 2
 # running kmeans clustering into two
@@ -43,5 +44,6 @@ cmap_bold = [ListedColormap(['#FF0000', '#00FF00']),  # type: ignore
 # now plot the same points, but this time assigning the colors to indicate the clusters
 
 plt.scatter(X[:, 0], X[:, 1], c=labels, edgecolor='black', cmap=cmap_bold[0], s=20)
+plt.show()
 
 print(kmeans.predict([[7, 3], [8, 4]]))

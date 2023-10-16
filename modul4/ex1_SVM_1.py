@@ -155,7 +155,8 @@ clf.fit(X, y)
 h = .01  # Stepsize in the mesh
 x_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5
 y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
-xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                     np.arange(y_min, y_max, h))
 
 # Predict on meshgrid
 Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
@@ -168,8 +169,7 @@ plt.contour(xx, yy, Z, cmap='viridis')
 
 # Plot also the training points
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap='viridis', edgecolors='k')
-plt.title('Support Vector Machine with polynomial'
-          ' kernel')
+plt.title('Support Vector Machine with polynomial kernel')
 plt.xlabel('$x_1$')
 plt.ylabel('$x_2$')
 
