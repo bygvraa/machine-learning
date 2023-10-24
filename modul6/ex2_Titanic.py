@@ -20,7 +20,7 @@ def accuracy(tp, tn, fp, fn):
 script_dir = os.path.dirname(__file__)
 
 # Define the file name
-file_name = 'titanic_train_500_age_passengerclass.csv'
+file_name = 'titanic_500.csv'
 
 # Construct the full file path
 file_path = os.path.join(script_dir, file_name)
