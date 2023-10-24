@@ -58,11 +58,10 @@ y_pred = mlp_clf.predict(X_test)
 # Evaluate model
 print(classification_report(y_test, y_pred))
 matrix = confusion_matrix(y_test, y_pred)
-mlp_params = mlp_clf.get_params()
 
-print(f'Hidden layers: {mlp_params["hidden_layer_sizes"]}')
-print(f'Activation: {mlp_params["activation"]}')
-print(f'Epochs: {mlp_params["max_iter"]}')
+print(f'Hidden layers: {mlp_clf.hidden_layer_sizes}')
+print(f'Activation: {mlp_clf.activation}')
+print(f'Epochs: {mlp_clf.max_iter}')
 
 # Plot matrix
 plt.matshow(matrix, cmap='Blues')
