@@ -31,7 +31,7 @@ data = pd.read_csv(file_path, sep=',', header=0)
 # show the data
 print(data.describe(include='all'))
 
-# the describe is a great way to get an overview of the data
+# the 'describe' is a great way to get an overview of the data
 # print(data.values)
 
 # Replace unknown values. Unknown class set to 3
@@ -80,8 +80,8 @@ xtest = scaler.transform(xtest)
 
 
 # Create an MLPClassifier (Multi-Layer Perceptron) with parameters
-hidden_layer_sizes = (8, 8) # 2 hidden layers, each with 8 neurons
-activation="identity"  # 'identity', 'logistic', 'tanh', 'relu'
+hidden_layer_sizes = (8, 8)  # 2 hidden layers, each with 8 neurons
+activation = "identity"  # 'identity', 'logistic', 'tanh', 'relu'
 epochs = 100
 
 mlp = MLPClassifier(
@@ -93,10 +93,8 @@ mlp = MLPClassifier(
 
 # Train the MLPClassifier model
 mlp.fit(xtrain, ytrain.values.ravel())
-# the reason for the values.ravel is that these data has not
-# been scaled and they need to be converted to the correct
-# input format for the mlp.fit. Data that is scaled already has
-# this done to them.
+# the reason for the values.ravel is that these data has not been scaled, and they need to be converted to the
+# correct input format for the mlp.fit. Data that is scaled already has this done to them.
 
 # Make predictions on the test set ('xtest')
 predictions = mlp.predict(xtest)
@@ -120,27 +118,29 @@ print(f"Hidden layers: {hidden_layer_sizes}")
 print(f"Activation: {activation}")
 print(f"Epochs: {epochs}")
 
+'''
+Experiments below - be systematic and record your result of each experiment with both the value of all important 
+parameters used and the achieved accuracy. Now it is time for some experiments (remember to record, write down, 
+your results - each time.
 
-# Experiments below - be systematic and record your result of each experiment with both the value of all important parameters used and the achieved accuracy.
-# Now it is time for some experiments (remember to record, write down, your results - each time.
+Be systematic in your experiments):
+Try (at least) the following (in a systematic way, record your findings):
+  a) Try to experiment with the network topology (number of nodes and layers) to see if you can get a higher accuracy.
+      - 0.73 (8, 8)
 
-# Be systematic in your experiments):
-# Try (at least) the following (in a systematic way, record your findings):
-#   a) Try to experiment with the network topology (i.e. number of nodes and layers) to see if you can achieve a higher accuracy?
-#       - 0.73 (8, 8)
+  b) Try to experiment with the way you handle the missing input age data to see how this reflect the accuracy?
 
-#   b) Try to experiment with the way you handle the missing input age data to see how this reflect the accuracy?
+  c) Can we do without the scaler?
+      - Yes, but the result is not as accurate
 
-#   c) Can we do without the scaler?
-#       - Yes, but the result is not as accurate
+  d) What about the batch size? Experiment with that also and see if it has an effect on the accuracy.
 
-#   d) What about the batch size? Experiment with that also and see if it has an effect on the accuracy.
+  e) What about the number of epochs? Does that have an effect on accuracy?
+      - 100 seems to be a good iteration
 
-#   e) What about the number of epochs? Does that have an effect on accuracy?
-#       - 100 seems to be a good iteration
-
-#   f) What about changing the activation function? (again see the MLP scikit documentation for that - link earlier)
-#       - 0.73: relu
-#       - 0.74: tanh
-#       - 0.76: logistic
-#       - 0.77: identity
+  f) What about changing the activation function? (again see the MLP scikit documentation for that - link earlier)
+      - 0.73: relu
+      - 0.74: tanh
+      - 0.76: logistic
+      - 0.77: identity
+'''

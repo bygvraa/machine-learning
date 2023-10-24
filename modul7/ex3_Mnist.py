@@ -21,15 +21,17 @@ print(pd.DataFrame(mnist.target).shape)
 
 # Opretter en figur med 2 rækker og 10 kolonner for at vise 20 billeder fra MNIST-datasettet.
 # Hver figur viser et håndskrevet tal og dets tilsvarende måletiket.
-    # fig, axes = plt.subplots(2, 10, figsize=(16, 6))
-    # for i in range(20):
-    #     # Vis billedet i gråtoner
-    #     axes[i // 10, i % 10].imshow(mnist.images[i], cmap='gray')
-    #     axes[i // 10, i % 10].axis('off')
-    #     axes[i // 10, i % 10].set_title(f"target: {mnist.target[i]}")
+"""
+fig, axes = plt.subplots(2, 10, figsize=(16, 6))
+for i in range(20):
+    # Vis billedet i gråtoner
+    axes[i // 10, i % 10].imshow(mnist.images[i], cmap='gray')
+    axes[i // 10, i % 10].axis('off')
+    axes[i // 10, i % 10].set_title(f"target: {mnist.target[i]}")
 
-    # plt.tight_layout()
-    # plt.show()
+plt.tight_layout()
+plt.show()
+"""
 
 X_train, X_test, y_train, y_test = train_test_split(mnist.data,
                                                     mnist.target,
@@ -68,13 +70,12 @@ plt.title('Random Forest' +
 plt.ylabel('Actual')
 plt.xlabel('Predicted')
 
-
 ### MLP
 n_layers = (8, 8)
 n_epochs = 100
 
 mlp_clf = MLPClassifier(
-    hidden_layer_sizes=n_layers, 
+    hidden_layer_sizes=n_layers,
     max_iter=n_epochs)
 
 mlp_clf.fit(X_train, y_train)

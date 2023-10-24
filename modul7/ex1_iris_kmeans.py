@@ -49,7 +49,7 @@ k = 3
 # running kmeans clustering into two
 kmeans = KMeans(n_clusters=k, random_state=0).fit(x_petal)
 
-# the random state is optionlly, here it is specified so we get determistic clusters.
+# the random state is optionally, here it is specified, so we get deterministic clusters.
 # this will contain the labels for our predicted clusters (either 0 or 1)
 labels = kmeans.labels_
 
@@ -79,7 +79,7 @@ k = 3
 # running kmeans clustering into two
 kmeans = KMeans(n_clusters=k, random_state=0).fit(x_sepal)
 
-# the random state is optionlly, here it is specified so we get determistic clusters.
+# the random state is optionally, here it is specified, so we get deterministic clusters.
 # this will contain the labels for our predicted clusters (either 0 or 1)
 labels = kmeans.labels_
 

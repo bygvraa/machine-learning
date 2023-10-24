@@ -23,9 +23,8 @@ plt.show()
 # Principal axes in feature space, representing the directions of maximum variance in the data.
 # The components are sorted by explained_variance_.
 
-# pca.components_ has the meaning of each principal component, essentially how it was derived
-# checking shape tells us it has 2 rows, one for each principal component and 4 columns, proportion of each of the 4 features
-# for each row
+# pca.components_ has the meaning of each principal component, essentially how it was derived checking shape tells us
+# it has 2 rows, one for each principal component and 4 columns, proportion of each of the 4 features for each row
 print(pca.components_)
 print(pca.components_.shape)
 
@@ -48,7 +47,7 @@ k = 4
 kmeans = KMeans(n_clusters=k, n_init='auto', random_state=0).fit(X_proj)
 
 
-# the random state is optionlly, here it is specified so we get determistic clusters.
+# the random state is optionally, here it is specified, so we get deterministic clusters.
 # this will contain the labels for our predicted clusters (either 0 or 1)
 labels = kmeans.labels_
 
