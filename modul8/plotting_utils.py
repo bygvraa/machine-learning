@@ -22,3 +22,21 @@ def plot_empty_values(data):
 
     plt.tight_layout()
     plt.show()
+
+def plot_confusion_matrix(matrix, ax=None, labels=None):
+    ax = ax or plt.gca()
+    ax.matshow(matrix, cmap='Blues')
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix)):
+            ax.text(j, i, str(matrix[i, j]), ha='center', va='center')
+
+    if labels is None:
+        ax.set_yticks(range(len(matrix)))
+        ax.set_xticks(range(len(matrix)))
+    else:
+        ax.set_yticks(range(len(matrix)), labels, va='center', rotation=90)
+        ax.set_xticks(range(len(matrix)), labels)
+
+    ax.set_ylabel('Actual', weight='bold')
+    ax.set_xlabel('Predicted', weight='bold')
